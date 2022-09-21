@@ -1,84 +1,6 @@
-require('nvim-treesitter.configs').setup {
-  ensure_installed = "maintained",
-  sync_install = false,
-
-  highlight = {
-    enable = true,
-    disable = { "c", "rust" },
-    additional_vim_regex_highlighting = false,
-  },
-}
-
-local cmp = require'cmp'
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) 
-    end,
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), 
-  }),
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[Nvim]",
-        cmp_tabnine = "[T9]",
-        luasnip = "[Snippet]",
-        buffer = "[Buffer]",
-        path = "[Path]",
-        emoji = "[Emoji]",
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-  sources = cmp.config.sources({
-    { name = 'cmp_tabnine' },
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  }, {
-    { name = 'buffer' },
-  })
-})
-
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' },     
-  }, {
-    { name = 'buffer' },
-  })
-})
-
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-
 local lspconfig = require("lspconfig")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
@@ -117,7 +39,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'gopls' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -141,23 +63,4 @@ lspconfig.tsserver.setup({
   end,
 })
 
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.eslint_d,
-    null_ls.builtins.code_actions.eslint_d,
-  },
-  on_attach = on_attach
-})
-
-local tabnine = require('cmp_tabnine.config')
-
-tabnine:setup({
-  max_lines = 1000;
-  max_num_results = 20;
-  sort = true;
-  run_on_every_keystroke = true;
-  snippet_placeholder = '..';
-  show_prediction_strength = false;
-})
 

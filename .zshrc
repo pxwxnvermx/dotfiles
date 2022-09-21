@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf)
+plugins=(git asdf brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,5 +110,5 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias dotfiles='/usr/bin/git --git-dir=/home/pawan/.dotfiles/ --work-tree=/home/pawan'
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

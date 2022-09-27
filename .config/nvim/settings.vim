@@ -27,10 +27,14 @@ set history=1000
 
 syntax enable
 syntax on
-set termguicolors
 set background=dark
-colorscheme gruvbox
-let g:gruvbox_contrast_dark="hard"
+
+if has('termguicolors')
+  set termguicolors
+endif
+let g:sonokai_style = 'andromeda'
+let g:sonokai_better_performance = 1
+colorscheme sonokai
 
 nnoremap <F3> :NERDTreeToggle<cr>
 nmap <silent> gd <Plug>(coc-definition)

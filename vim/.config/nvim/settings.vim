@@ -1,4 +1,4 @@
-set encoding=utf8
+set encoding=UTF-8
 set backspace=indent,eol,start
 set undodir=~/.vim/undo-dir
 set undofile
@@ -24,6 +24,7 @@ set showmode
 set showmatch
 set hlsearch
 set history=1000
+set completeopt=menu,menuone,noselect
 
 syntax enable
 syntax on
@@ -32,6 +33,7 @@ set background=dark
 if has('termguicolors')
   set termguicolors
 endif
+
 let g:sonokai_style = 'andromeda'
 let g:sonokai_better_performance = 1
 colorscheme sonokai
@@ -41,8 +43,21 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint']
 

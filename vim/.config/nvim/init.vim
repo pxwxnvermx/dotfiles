@@ -22,5 +22,4 @@ call plug#end()
 
 lua require("plugins") 
 source ~/.config/nvim/settings.vim
-lua require("bufferline").setup{}
 

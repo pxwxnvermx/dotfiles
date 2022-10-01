@@ -38,26 +38,13 @@ let g:sonokai_style = 'andromeda'
 let g:sonokai_better_performance = 1
 colorscheme sonokai
 
-nnoremap <F3> :NERDTreeToggle<cr>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+highlight Normal ctermbg=none guibg=none
+highlight NonText ctermbg=none guibg=none
+highlight EndOfBuffer ctermbg=none guibg=none
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+nnoremap <F3> :NERDTreeToggle<cr>
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
-let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint']
 

@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local cmp = require 'cmp'
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'prismals' }
 
 cmp.setup({
   snippet = {
@@ -89,7 +90,6 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

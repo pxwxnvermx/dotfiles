@@ -1,3 +1,5 @@
+map <space> <Leader>
+
 set encoding=UTF-8
 set backspace=indent,eol,start
 set undodir=~/.vim/undo-dir
@@ -40,11 +42,13 @@ colorscheme sonokai
 
 highlight Normal ctermbg=none guibg=none
 highlight NonText ctermbg=none guibg=none
-highlight EndOfBuffer ctermbg=none guibg=none
+highlight EndOfBuffer ctermbg=none guibg=NonText
 
-nnoremap <F3> :NERDTreeToggle<cr>
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 

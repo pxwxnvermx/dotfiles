@@ -1,6 +1,12 @@
 local lspconfig = require("lspconfig")
-local cmp = require 'cmp'
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'gopls', 'prismals' }
+local cmp = require("cmp")
+
+if not cmp then
+  print("CMP Not found")
+  return
+end
+
+local servers = { 'bashls', 'pyright', 'html', 'cssls', 'tsserver', 'gopls', 'prismals' }
 
 cmp.setup({
   snippet = {
@@ -75,6 +81,7 @@ local on_attach = function(client, bufnr)
   vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
   buf_map(bufnr, "n", "gd", ":LspDef<CR>")
   buf_map(bufnr, "n", "gr", ":LspRename<CR>")
+  buf_map(bufnr, "n", "gi", ":LspImplementation<CR>")
   buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
   buf_map(bufnr, "n", "K", ":LspHover<CR>")
   buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
@@ -83,7 +90,7 @@ local on_attach = function(client, bufnr)
   buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
   buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
   buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-  buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+  buf_map(bufnr, "n", "grf", ":TSLspRenameFile<CR>")
   buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
   if client.resolved_capabilities.document_formatting then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
@@ -118,3 +125,4 @@ lspconfig.sumneko_lua.setup({
     },
   },
 })
+

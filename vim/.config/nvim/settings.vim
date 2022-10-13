@@ -1,12 +1,10 @@
-map <space> <Leader>
-
 set encoding=UTF-8
 set backspace=indent,eol,start
 set undodir=~/.vim/undo-dir
 set undofile
 set laststatus=2
 set noshowmode
-set showtabline=2
+set showtabline=0
 set number
 set relativenumber
 set nocompatible
@@ -30,6 +28,7 @@ set completeopt=menu,menuone,noselect
 
 syntax enable
 syntax on
+
 set background=dark
 
 if has('termguicolors')
@@ -44,11 +43,12 @@ highlight Normal ctermbg=none guibg=none
 highlight NonText ctermbg=none guibg=none
 highlight EndOfBuffer ctermbg=none guibg=NonText
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+map <space> <Leader>
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fg :Rg<cr>
+
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+let g:fzf_preview_window = ''
+
 

@@ -4,7 +4,6 @@ set undodir=~/.vim/undo-dir
 set undofile
 set laststatus=2
 set noshowmode
-set showtabline=0
 set number
 set relativenumber
 set nocompatible

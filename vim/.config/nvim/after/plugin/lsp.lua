@@ -6,7 +6,12 @@ if not cmp then
   return
 end
 
-local servers = { 'bashls', 'pyright', 'html', 'cssls', 'tsserver', 'gopls', 'prismals' }
+require("mason").setup()
+require("mason-lspconfig").setup({
+  automatic_installation = true,
+})
+
+local servers = { 'bashls', 'pyright', 'html', 'cssls', 'tsserver', 'gopls', 'prismals', 'lua_ls' }
 
 cmp.setup({
   snippet = {
@@ -92,7 +97,7 @@ local on_attach = function(client, bufnr)
   buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
   buf_map(bufnr, "n", "grf", ":TSLspRenameFile<CR>")
   buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
 end
@@ -105,7 +110,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {

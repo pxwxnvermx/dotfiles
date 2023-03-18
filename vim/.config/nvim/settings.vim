@@ -50,4 +50,8 @@ nnoremap <leader>fg :Rg<cr>
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let g:fzf_preview_window = ''
 
-
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+endif

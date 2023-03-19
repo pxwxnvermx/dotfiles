@@ -16,6 +16,7 @@ Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/sonokai'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

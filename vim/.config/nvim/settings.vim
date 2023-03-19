@@ -34,13 +34,13 @@ if has('termguicolors')
   set termguicolors
 endif
 
-let g:sonokai_style = 'andromeda'
-let g:sonokai_better_performance = 1
-colorscheme sonokai
+"let g:sonokai_style = 'andromeda'
+"let g:sonokai_better_performance = 1
+colorscheme catppuccin-mocha
 
-highlight Normal ctermbg=none guibg=none
-highlight NonText ctermbg=none guibg=none
-highlight EndOfBuffer ctermbg=none guibg=NonText
+"highlight Normal ctermbg=none guibg=none
+"highlight NonText ctermbg=none guibg=none
+"highlight EndOfBuffer ctermbg=none guibg=NonText
 
 map <space> <Leader>
 nnoremap <leader>ff :Files<cr>

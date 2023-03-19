@@ -11,7 +11,7 @@ require("mason-lspconfig").setup({
   automatic_installation = true,
 })
 
-local servers = { 'bashls', 'pyright', 'html', 'cssls', 'tsserver', 'gopls', 'prismals', 'lua_ls' }
+local servers = { 'bashls', 'pyright', 'html', 'cssls', 'tsserver', 'gopls', 'prismals', 'lua_ls', 'rust_analyzer' }
 
 cmp.setup({
   snippet = {

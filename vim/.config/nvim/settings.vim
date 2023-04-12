@@ -34,22 +34,16 @@ if has('termguicolors')
   set termguicolors
 endif
 
-"let g:sonokai_style = 'andromeda'
-"let g:sonokai_better_performance = 1
 colorscheme catppuccin-mocha
 
-"highlight Normal ctermbg=none guibg=none
-"highlight NonText ctermbg=none guibg=none
-"highlight EndOfBuffer ctermbg=none guibg=NonText
-
 map <space> <Leader>
-nnoremap <leader>ff :Files<cr>
-nnoremap <leader>fb :Buffers<cr>
-nnoremap <leader>fg :Rg<cr>
 nnoremap <leader>fv :Ex<cr>
-
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-let g:fzf_preview_window = ''
+nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap gd <cmd>Telescope lsp_references<cr>
+nnoremap <leader>a <cmd>Telescope diagnostics<cr>
 
 if exists("$VIRTUAL_ENV")
     let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')

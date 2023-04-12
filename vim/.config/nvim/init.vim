@@ -14,6 +14,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/sonokai'

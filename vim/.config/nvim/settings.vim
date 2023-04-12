@@ -46,6 +46,7 @@ map <space> <Leader>
 nnoremap <leader>ff :Files<cr>
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>fg :Rg<cr>
+nnoremap <leader>fv :Ex<cr>
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let g:fzf_preview_window = ''

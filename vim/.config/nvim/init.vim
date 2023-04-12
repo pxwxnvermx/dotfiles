@@ -13,6 +13,7 @@ Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/sonokai'

@@ -1,136 +1,72 @@
-local lspconfig = require("lspconfig")
-local cmp = require("cmp")
+local lsp = require("lsp-zero")
 
-if not cmp then
-  print("CMP Not found")
-  return
-end
+lsp.preset("recommended")
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-  automatic_installation = true,
+lsp.ensure_installed({
+  'tsserver',
+  'rust_analyzer',
 })
 
-local servers = { 'bashls', 'pyright', 'html', 'cssls', 'tsserver', 'gopls', 'prismals', 'lua_ls', 'rust_analyzer' }
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'ultisnips' }, -- For ultisnips users.
-  }, {
-    { name = 'buffer' },
-  })
+lsp.configure('lua-language-server', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
 })
 
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ["<C-Space>"] = cmp.mapping.complete(),
 })
 
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
 })
 
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
 
-local buf_map = function(bufnr, mode, lhs, rhs, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
-    silent = true,
-  })
-end
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>sw", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>a", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[a", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]a", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>gn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-local on_attach = function(client, bufnr)
-  vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-  vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
-  vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
-  vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
-  vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
-  vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
-  vim.cmd("command! LspTypeDef lua vim.lsp.buf.type_definition()")
-  vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
-  vim.cmd("command! LspDiagPrev lua vim.diagnostic.goto_prev()")
-  vim.cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
-  vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
-  vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
-  buf_map(bufnr, "n", "gd", ":LspDef<CR>")
-  buf_map(bufnr, "n", "gr", ":LspRename<CR>")
-  buf_map(bufnr, "n", "gi", ":LspImplementation<CR>")
-  buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
-  buf_map(bufnr, "n", "K", ":LspHover<CR>")
-  buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
-  buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>")
-  buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
-  buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
-  buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
-  buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-  buf_map(bufnr, "n", "grf", ":TSLspRenameFile<CR>")
-  buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
   if client.server_capabilities.document_formatting then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
-end
+end)
 
+lsp.setup()
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    capabilities = capabilities,
-    on_attach = on_attach
-  }
-end
-
-lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+vim.diagnostic.config({
+    virtual_text = true
 })
-
 
 local null_ls = require("null-ls")
 
@@ -143,3 +79,5 @@ null_ls.setup({
         null_ls.builtins.diagnostics.flake8,
     },
 })
+
+

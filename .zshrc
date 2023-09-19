@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf)
+plugins=(git asdf fzf minikube)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,8 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export WORKON_HOME=~/.virtualenvs
-source $(asdf where python)/bin/virtualenvwrapper.sh
-
+alias win_reboot="sudo grub2-reboot 'Windows Boot Manager (on /dev/nvme0n1p1)' && sudo reboot"
+fpath=(~/.zsh.d/ $fpath)
+alias docker=podman

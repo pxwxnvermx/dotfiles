@@ -105,6 +105,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  "jose-elias-alvarez/null-ls.nvim"
 }, {})
 
 vim.o.hlsearch = false

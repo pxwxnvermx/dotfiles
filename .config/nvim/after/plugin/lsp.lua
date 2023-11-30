@@ -1,4 +1,4 @@
--- Diagnostic keymaps
+-- Diagnostic keymapslsp
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
@@ -71,14 +71,6 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
-	pyright = {
-		python = {
-			analysis = {
-				diagnosticSeverityOverrides = {
-				},
-			},
-		},
-	}
 }
 
 -- Setup neovim lua configuration
@@ -158,7 +150,6 @@ cmp.setup {
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
 	debug = true,
@@ -172,6 +163,5 @@ null_ls.setup({
 		formatting.isort,
 		diagnostics.flake8,
 		diagnostics.eslint,
-		code_actions.gitsigns,
 	},
 })

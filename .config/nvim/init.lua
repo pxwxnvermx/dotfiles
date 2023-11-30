@@ -57,10 +57,10 @@ require('lazy').setup({
     },
   },
   {
-    'navarasu/onedark.nvim',
+    'catppuccin/nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
 
@@ -75,12 +75,12 @@ require('lazy').setup({
       },
     },
   },
-
   {
     'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+      indent = { char = '┊' },
+      whitespace = { remove_blankline_trail = false },
     },
   },
   { 'numToStr/Comment.nvim', opts = {} },
@@ -121,6 +121,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
+vim.o.relativenumber = true
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

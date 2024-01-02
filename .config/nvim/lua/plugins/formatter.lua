@@ -6,7 +6,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier", "eslint_d" } },
+				javascript = { { "prettierd", "prettier", }, "eslint_d" },
+				html = { { "prettierd", "prettier", }, "eslint_d" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

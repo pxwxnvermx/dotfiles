@@ -66,6 +66,55 @@ return {
 			{ "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll forward",  mode = { "i", "n", "s" } },
 			{ "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,              expr = true,              desc = "Scroll backward", mode = { "i", "n", "s" } },
 		},
-	}
-
+	},
+	"tpope/vim-fugitive",
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			-- See `:help gitsigns.txt`
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+			on_attach = function(bufnr)
+				vim.keymap.set(
+					"n",
+					"<leader>gp",
+					require("gitsigns").prev_hunk,
+					{ buffer = bufnr, desc = "[G]o to [P]revious Hunk" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>gn",
+					require("gitsigns").next_hunk,
+					{ buffer = bufnr, desc = "[G]o to [N]ext Hunk" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>ph",
+					require("gitsigns").preview_hunk,
+					{ buffer = bufnr, desc = "[P]review [H]unk" }
+				)
+			end,
+		},
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				javascript = { { "prettierd", "prettier", }, "eslint_d" },
+				html = { { "prettierd", "prettier", }, "eslint_d" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+		},
+	},
 }

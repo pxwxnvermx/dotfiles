@@ -30,7 +30,9 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 vim.o.relativenumber = true
-vim.o.bg = "light"
+vim.o.bg = "dark"
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

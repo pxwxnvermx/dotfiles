@@ -1,5 +1,5 @@
 return {
-	{ "catppuccin/nvim",      name = "catppuccin" },
+	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "navarasu/onedark.nvim" },
 	{ "folke/which-key.nvim", opts = {} },
 	{
@@ -121,6 +121,7 @@ return {
 		},
 	},
 	"tpope/vim-fugitive",
+	"tpope/vim-sleuth",
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {

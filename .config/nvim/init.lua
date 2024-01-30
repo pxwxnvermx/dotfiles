@@ -15,4 +15,4 @@ require("config.keymaps")
 require("config.options")
 require("lazy").setup("plugins", {})
 
-vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("onedark")

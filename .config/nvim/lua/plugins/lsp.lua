@@ -41,6 +41,8 @@ return {
 				},
 				pyright = {},
 				ruff_lsp = {},
+				templ = {},
+				htmx = {},
 			},
 		},
 		config = function(_, opts)
@@ -102,6 +104,7 @@ return {
 					})
 				end,
 			})
+			vim.filetype.add({ extension = { templ = "templ" } })
 		end,
 	},
 	{

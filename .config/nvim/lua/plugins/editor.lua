@@ -1,5 +1,21 @@
 return {
-	"navarasu/onedark.nvim/",
+	"navarasu/onedark.nvim",
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			term_colors = true,
+			transparent_background = false,
+			color_overrides = {
+				mocha = {
+					base = "#000000",
+					mantle = "#000000",
+					crust = "#000000",
+				},
+			},
+		},
+	},
 	{ "folke/which-key.nvim", opts = {} },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
@@ -122,5 +138,17 @@ return {
 		"m4xshen/hardtime.nvim",
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		opts = {},
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+		},
 	},
 }

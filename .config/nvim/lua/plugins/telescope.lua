@@ -34,6 +34,7 @@ return {
 			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "[S]earch current [W]ord" } },
 			{ "<leader>sg", "<cmd>Telescope live_grep<cr>", { desc = "[S]earch by [G]rep" } },
 			{ "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "[S]earch [D]iagnostics" } },
+			{ "<leader>ss", "<cmd>Telescope current_buffer_fuzzy_find <cr>", { desc = "[S]earch [D]iagnostics" } },
 		},
 	},
 }

@@ -1,4 +1,5 @@
 return {
+	"tpope/vim-sleuth",
 	"navarasu/onedark.nvim",
 	{
 		"catppuccin/nvim",

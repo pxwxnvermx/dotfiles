@@ -1,6 +1,6 @@
 return {
 	"tpope/vim-sleuth",
-	"navarasu/onedark.nvim",
+	"Lokaltog/vim-monotone",
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -17,7 +17,7 @@ return {
 			},
 		},
 	},
-	{ "folke/which-key.nvim", opts = {} },
+	{ "folke/which-key.nvim",  opts = {} },
 	{ "numToStr/Comment.nvim", opts = {} },
 	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",

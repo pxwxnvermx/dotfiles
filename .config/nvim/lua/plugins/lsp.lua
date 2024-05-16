@@ -4,7 +4,7 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
-			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+			{ "j-hui/fidget.nvim",       tag = "legacy", opts = {} },
 			"folke/neodev.nvim",
 		},
 		opts = {
@@ -51,7 +51,7 @@ return {
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
-			local on_attach = function(_, bufnr)
+			local on_attach = function(client, bufnr)
 				local nmap = function(keys, func, desc)
 					if desc then
 						desc = "LSP: " .. desc
@@ -84,6 +84,7 @@ return {
 				vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 					vim.lsp.buf.format()
 				end, { desc = "Format current buffer with LSP" })
+				client.server_capabilities.semanticTokensProvider = nil
 			end
 			require("neodev").setup()
 			local capabilities = vim.lsp.protocol.make_client_capabilities()

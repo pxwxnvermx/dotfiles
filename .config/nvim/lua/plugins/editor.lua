@@ -1,6 +1,5 @@
 return {
 	"tpope/vim-sleuth",
-	"Lokaltog/vim-monotone",
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",

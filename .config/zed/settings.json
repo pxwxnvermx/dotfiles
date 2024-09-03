@@ -1,0 +1,20 @@
+{
+  "theme": "Sencilla",
+  "vim_mode": true,
+  "chat_panel": {
+    "button": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "assistant": {
+    "button": false,
+    "version": "2"
+  },
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_size": 14,
+  "features": {
+    "copilot": false,
+    "inline_completion_provider": "none"
+  }
+}

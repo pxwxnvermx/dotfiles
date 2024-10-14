@@ -16,7 +16,17 @@ return {
 			},
 		},
 	},
-	{ "folke/which-key.nvim",  opts = {} },
+	{
+		"navarasu/onedark.nvim",
+		name = "onedark",
+		opts = {
+			style = "darker",
+			colors = {
+				bg0 = "#000000",
+			},
+		},
+	},
+	{ "folke/which-key.nvim", opts = {} },
 	{ "numToStr/Comment.nvim", opts = {} },
 	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",
@@ -30,10 +40,13 @@ return {
 				javascript = { { "prettierd", "prettier" }, "eslint_d" },
 				html = { { "prettierd", "prettier" }, "eslint_d" },
 			},
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
+			format_on_save = function(bufnr)
+				-- Disable with a global or buffer-local variable
+				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return
+				end
+				return { timeout_ms = 500, lsp_fallback = true }
+			end,
 		},
 	},
 	{

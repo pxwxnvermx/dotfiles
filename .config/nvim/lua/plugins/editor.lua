@@ -16,17 +16,7 @@ return {
 			},
 		},
 	},
-	{
-		"navarasu/onedark.nvim",
-		name = "onedark",
-		opts = {
-			style = "darker",
-			colors = {
-				bg0 = "#000000",
-			},
-		},
-	},
-	{ "folke/which-key.nvim", opts = {} },
+	{ "folke/which-key.nvim",  opts = {} },
 	{ "numToStr/Comment.nvim", opts = {} },
 	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",

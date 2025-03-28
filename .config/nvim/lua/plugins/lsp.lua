@@ -39,8 +39,27 @@ return {
 						},
 					},
 				},
-				pyright = {},
-				ruff_lsp = {},
+				pylsp = {
+					settings = {
+						pylsp = {
+							plugins = {
+								rope_autoimport = {
+									enabled = true,
+								},
+								ruff = {
+									enabled = true,
+									formatEnabled = true,
+								},
+								isort = {
+									enabled = true,
+								},
+								black = {
+									enabled = true,
+								},
+							},
+						},
+					},
+				},
 				templ = {},
 				htmx = {},
 			},
@@ -88,13 +107,13 @@ return {
 			end
 			require("neodev").setup()
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 			local mason_lspconfig = require("mason-lspconfig")
 			mason_lspconfig.setup({
 				ensure_installed = vim.tbl_keys(opts.servers),
+				automatic_installation = {},
 			})
-
 			mason_lspconfig.setup_handlers({
 				function(server_name)
 					require("lspconfig")[server_name].setup({
@@ -109,66 +128,32 @@ return {
 		end,
 	},
 	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"rafamadriz/friendly-snippets",
-		},
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			require("luasnip.loaders.from_vscode").lazy_load()
-			luasnip.config.setup({})
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
 
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+		version = "1.*",
+		opts = {
+			keymap = { preset = "default" },
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = {
+				menu = {
+					auto_show = false,
+					draw = {
+						columns = {
+							{ "label", "label_description", gap = 1 },
+							{ "kind_icon", "kind" },
+						},
+					},
 				},
-				window = {
-					documentation = cmp.config.window.bordered(),
-					completion = cmp.config.window.bordered(),
-				},
-				completion = {
-					autocomplete = false,
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-					["<C-d>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete({ reason = cmp.ContextReason.Auto }),
-					["<CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					}),
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-				}),
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-				},
-			})
-		end,
+				documentation = { auto_show = true },
+			},
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
 	},
 }

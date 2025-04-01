@@ -39,27 +39,20 @@ return {
 						},
 					},
 				},
-				pylsp = {
-					settings = {
-						pylsp = {
-							plugins = {
-								rope_autoimport = {
-									enabled = true,
-								},
-								ruff = {
-									enabled = true,
-									formatEnabled = true,
-								},
-								isort = {
-									enabled = true,
-								},
-								black = {
-									enabled = true,
-								},
-							},
+				basedpyright = {
+					basedpyright = {
+						disableOrganizeImports = true,
+						analysis = {
+							typeCheckingMode = "off",
+						},
+					},
+					python = {
+						analysis = {
+							ignore = { "*" },
 						},
 					},
 				},
+				ruff = {},
 				templ = {},
 				htmx = {},
 			},
@@ -125,6 +118,20 @@ return {
 				end,
 			})
 			vim.filetype.add({ extension = { templ = "templ" } })
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client == nil then
+						return
+					end
+					if client.name == "ruff" then
+						-- Disable hover in favor of Pyright
+						client.server_capabilities.hoverProvider = false
+					end
+				end,
+				desc = "LSP: Disable hover capability from Ruff",
+			})
 		end,
 	},
 	{
@@ -133,7 +140,7 @@ return {
 
 		version = "1.*",
 		opts = {
-			keymap = { preset = "default" },
+			keymap = { preset = "enter" },
 			appearance = {
 				nerd_font_variant = "mono",
 			},
@@ -150,7 +157,7 @@ return {
 				documentation = { auto_show = true },
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets" },
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},

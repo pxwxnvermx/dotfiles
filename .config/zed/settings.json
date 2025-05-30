@@ -1,26 +1,50 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim_mode": true,
+  "buffer_font_family": "ComicShannsMono Nerd Font",
+  "ui_font_family": "ComicShannsMono Nerd Font",
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
+  },
+  "experimental.theme_overrides": {
+    "background": "#000",
+    "panel.background": "#000",
+    "editor.background": "#000",
+    "sidebar.background": "#000",
+    "tab_bar.background": "#000",
+    "tab.inactive_background": "#000",
+    "status_bar.background": "#000",
+    "activity_bar.background": "#000",
+    "title_bar.background": "#000",
+    "window.background": "#000",
+    "terminal.background": "#000",
+    "input.background": "#000",
+    "button.background": "#000",
+    "dropdown.background": "#000",
+    "list.background": "#000",
+    "menu.background": "#000",
+    "tooltip.background": "#000",
+    "surface.background": "#000",
+    "editor.gutter.background": "#000",
+    "editor.subheader.background": "#000",
+    "toolbar.background": "#000",
+    "border": "#1D1C1A"
+  },
+  "toolbar": {
+    "quick_actions": false,
+    "selections_menu": false,
+    "breadcrumbs": false
+  },
   "agent": {
+    "button": true,
     "model_parameters": [],
     "default_model": {
       "provider": "google",
       "model": "gemini-2.0-flash"
     },
     "version": "2"
-  },
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
-  },
-  "vim_mode": true
+  }
 }

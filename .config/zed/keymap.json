@@ -13,9 +13,10 @@
     }
   },
   {
-    "context": "Editor",
+    "context": "Editor && vim_mode == normal",
     "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "space space": "tab_switcher::ToggleAll",
+      "space f f": "file_finder::Toggle"
     }
   }
 ]

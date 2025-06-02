@@ -53,8 +53,6 @@ return {
 					},
 				},
 				ruff = {},
-				templ = {},
-				htmx = {},
 			},
 		},
 		config = function(_, opts)

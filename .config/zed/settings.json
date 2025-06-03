@@ -3,6 +3,16 @@
   "buffer_font_family": "ComicShannsMono Nerd Font",
   "ui_font_family": "ComicShannsMono Nerd Font",
   "ui_font_size": 16,
+  "tab_bar": { "show": false },
+  "vertical_scroll_margin": 0,
+  "scrollbar": { "show": "never" },
+  "relative_line_numbers": true,
+  "cursor_blink": false,
+  "toolbar": {
+    "quick_actions": false,
+    "selections_menu": false,
+    "breadcrumbs": false
+  },
   "buffer_font_size": 14,
   "theme": {
     "mode": "system",
@@ -32,11 +42,6 @@
     "editor.subheader.background": "#000",
     "toolbar.background": "#000",
     "border": "#1D1C1A"
-  },
-  "toolbar": {
-    "quick_actions": false,
-    "selections_menu": false,
-    "breadcrumbs": false
   },
   "agent": {
     "button": true,

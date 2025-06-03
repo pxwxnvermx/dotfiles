@@ -7,7 +7,7 @@
 // from the command palette.
 [
   {
-    "context": "Workspace || Editor && vim_mode == normal",
+    "context": "EmptyPane || SharedScreen",
     "bindings": {
       "space f f": "file_finder::Toggle"
     }
@@ -17,6 +17,13 @@
     "bindings": {
       "space space": "tab_switcher::ToggleAll",
       "space f f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
     }
   }
 ]

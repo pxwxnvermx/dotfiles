@@ -23,7 +23,15 @@
     "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
     "bindings": {
       "shift-j": "editor::MoveLineDown",
-      "shift-k": "editor::MoveLineUp"
+      "shift-k": "editor::MoveLineUp",
+      "space a a": "agent::NewThread"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space c a": "editor::ToggleCodeActions",
+      "space r n": "editor::Rename"
     }
   }
 ]

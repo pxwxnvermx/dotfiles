@@ -1,1 +1,6 @@
 **/lazy-lock.json
+*.*db
+
+.config/zed/conversations/
+.config/zed/prompts/
+.config/zed/themes/

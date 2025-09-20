@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf fzf)
+plugins=(git mise fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,9 +112,9 @@ alias venv='if [[ -d .venv ]] ; then source .venv/bin/activate ; elif [[ -d venv
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
 alias docker=podman
-
-export WORKON_HOME=~/.virtualenvs
-source $(asdf where python)/bin/virtualenvwrapper.sh
 export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
 
-ASDF_DATA_DIR="$HOME/.asdf"
+eval "$(mise activate zsh)"
+
+export ROCM_PATH=/opt/rocm
+export HSA_OVERRIDE_GFX_VERSION=10.3.0

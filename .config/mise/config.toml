@@ -1,0 +1,10 @@
+[tools]
+go = "1.24.1"
+node = "22.13.1"
+python = "3.11.8"
+rust = "stable"
+usage = "latest"
+zig = "0.15.1"
+
+[settings]
+idiomatic_version_file_enable_tools = ["python"]

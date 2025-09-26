@@ -7,13 +7,20 @@
 (global-display-line-numbers-mode)
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
-   '("01a9797244146bbae39b18ef37e6f2ca5bebded90d9fe3a2f342a9e863aaa4fd"
-     default))
- '(package-selected-packages '(## evil gruber-darker-theme)))
+   '("c46651ab216eb31e699be1bd5e6df8229b08005b534194c1ea92519b09661d71" "01a9797244146bbae39b18ef37e6f2ca5bebded90d9fe3a2f342a9e863aaa4fd" default))
+ '(package-selected-packages '(catppuccin-theme ## evil gruber-darker-theme)))
 (custom-set-faces
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#181818" :foreground "#e4e4ef" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight regular :height 110 :width normal :foundry "NONE" :family "ComicShannsMono Nerd Font Mono")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#181818" :foreground "#e4e4ef" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight regular :height 130 :width normal :foundry "NONE" :family "ComicShannsMono Nerd Font Mono")))))
 
 (require 'package)
 (setq package-archives
@@ -30,12 +37,12 @@
 		("nongnu"       . 0)))
 
 (package-initialize)
-(package-refresh-contents)
+;(package-refresh-contents)
 
-;;; Download Evil
-;(unless (package-installed-p 'evil)
-;  (package-install 'evil))
-;
-;;; Enable Evil
-;(require 'evil)
-;(evil-mode 1)
+;; Download Evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)

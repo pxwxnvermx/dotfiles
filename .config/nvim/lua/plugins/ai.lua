@@ -5,8 +5,10 @@ return {
 		version = false,
 		opts = {
 			provider = "ollama",
-			ollama = {
-				model = "gemma3:12b",
+			providers = {
+				ollama = {
+					model = "gemma3:12b",
+				},
 			},
 		},
 		build = "make",

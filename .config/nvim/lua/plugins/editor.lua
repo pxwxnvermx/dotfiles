@@ -38,4 +38,8 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
+	{
+		"f-person/auto-dark-mode.nvim",
+		opts = {},
+	},
 }

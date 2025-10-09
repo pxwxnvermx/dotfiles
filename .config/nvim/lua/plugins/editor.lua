@@ -1,5 +1,4 @@
 return {
-	"tpope/vim-sleuth",
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -38,10 +37,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
-	{
-		"f-person/auto-dark-mode.nvim",
-		opts = {},
-	},
+	{ "f-person/auto-dark-mode.nvim", opts = {} },
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
@@ -81,36 +77,6 @@ return {
 		},
 	},
 	{
-		"yetone/avante.nvim",
-		event = "VeryLazy",
-		version = false,
-		opts = {
-			provider = "ollama",
-			providers = {
-				ollama = {
-					model = "gemma3:12b",
-				},
-			},
-		},
-		build = "make",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"echasnovski/mini.pick",
-			"nvim-telescope/telescope.nvim",
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
-		},
-	},
-	{
 		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
 		main = 'nvim-treesitter.configs',
@@ -132,7 +98,6 @@ return {
 				html = { "prettierd", "prettier", "eslint_d" },
 			},
 			format_on_save = function(bufnr)
-				-- Disable with a global or buffer-local variable
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end

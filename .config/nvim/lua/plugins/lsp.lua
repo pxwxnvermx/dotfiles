@@ -66,6 +66,7 @@ return {
 						-- Disable hover in favor of Pyright
 						client.server_capabilities.hoverProvider = false
 					end
+					client.server_capabilities.semanticTokensProvider = nil
 				end,
 				desc = "LSP: Disable hover capability from Ruff",
 			})

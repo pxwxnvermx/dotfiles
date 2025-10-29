@@ -1,63 +1,82 @@
-@define-color bg #0E0E0E;
-@define-color text #FFE;
-@define-color tp rgba(40, 40, 40, 0);
-@define-color bg2 #FFE;
-@define-color bg3 #99917f;
-/* -----------------------------------------------------
- * General 
- * ----------------------------------------------------- */
-
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    border: none;
-    border-radius: 0px;
-    font-weight: bold;
+  background-color: #000000;
+  color: #FFFFFF;
 
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 14px;
+  font-weight: 900;
 }
 
-window#waybar {
-    background-color: @tp;
-    transition-property: background-color;
-    transition-duration: .5s;
+.modules-left {
+  margin-left: 8px;
 }
 
-#workspaces, #network, #clock, #tray, #pulseaudio {
-    font-size: 14px;
-    color: @text;
-    border-radius: 5px;
-    padding: 5px 5px;
-    background-color: @bg;
+.modules-right {
+  margin-right: 8px;
 }
 
 #workspaces button {
-    border: 0px;
-    margin: 0 2px;
-    padding: 1px 5px;
-    color: @text;
-    transition: all 0.5s ease-in-out;
-    border-radius: 5px;
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
 }
 
-#workspaces button.active {
-    color: @bg;
-    background-color: @bg2;
-    border-radius: 5px;
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
-#workspaces button:hover {
-    color: @bg;
-    background: @bg2;
-    border-radius: 5px;
+#cpu,
+#battery,
+#pulseaudio,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
 }
 
-#network.ethernet {
-    color: @text;
+#tray {
+  margin-right: 16px;
 }
 
-#network.wifi {
-    color: @text;
+#bluetooth {
+  margin-right: 17px;
 }
 
-#pulseaudio.muted {
-    color: @text;
+#network {
+  margin-right: 13px;
+}
+
+#custom-expand-icon {
+  margin-right: 20px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  min-width: 12px;
+  margin-left: 8.75px;
+  font-size: 10px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
 }

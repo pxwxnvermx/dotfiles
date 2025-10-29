@@ -9,14 +9,22 @@
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
-      "space f f": "file_finder::Toggle"
+      "space f f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space a a": "agent::ToggleFocus",
+      "space h l": "workspace::ToggleLeftDock",
+      "space h r": "workspace::ToggleRightDock"
     }
   },
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space space": "tab_switcher::ToggleAll",
-      "space f f": "file_finder::Toggle"
+      "space f f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space a a": "agent::ToggleFocus",
+      "space h l": "workspace::ToggleLeftDock",
+      "space h r": "workspace::ToggleRightDock"
     }
   },
   {
@@ -24,7 +32,7 @@
     "bindings": {
       "shift-j": "editor::MoveLineDown",
       "shift-k": "editor::MoveLineUp",
-      "space a a": "agent::NewThread"
+      "space a n": "agent::NewExternalAgentThread"
     }
   },
   {

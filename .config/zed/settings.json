@@ -1,4 +1,5 @@
 {
+  "icon_theme": "Material Icon Theme",
   "vim_mode": true,
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "buffer_font_size": 14,
@@ -9,37 +10,35 @@
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
-  "agent": {
-    "button": true,
-    "model_parameters": [],
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-2.0-flash"
-    }
-  },
+  "agent": { "button": false },
   "terminal": { "button": false },
   "languages": {
     "Python": {
-      "language_servers": ["ty", "ruff", "!pyright", "!basedpyright"],
-      "format_on_save": "on",
-      "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
-        },
-        {
-          "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
+      "language_servers": ["!pyright", "basedpyright"]
     }
   },
   "lsp": {
-    "ty": {},
-    "ruff": {}
+    "basedpyright": {
+      "binary": {
+        "path": "basedpyright-langserver",
+        "arguments": ["--stdio"]
+      },
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python",
+          "analysis": {
+            "ignore": ["*"]
+          }
+        },
+        "basedpyright.analysis": {
+          "diagnosticMode": "workspace",
+          "typeCheckingMode": "off",
+          "inlayHints": {
+            "callArgumentNames": false
+          }
+        }
+      }
+    }
   },
   "vertical_scroll_margin": 0,
   "scrollbar": { "show": "never" },
@@ -49,5 +48,11 @@
     "quick_actions": false,
     "selections_menu": false,
     "breadcrumbs": false
+  },
+  "project_panel": {
+    "hide_root": true
+  },
+  "gutter": {
+    "folds": false
   }
 }

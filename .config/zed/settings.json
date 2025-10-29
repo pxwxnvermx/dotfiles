@@ -14,7 +14,22 @@
   "terminal": { "button": false },
   "languages": {
     "Python": {
-      "language_servers": ["!pyright", "basedpyright"]
+      "language_servers": ["!pyright", "basedpyright"],
+      "formatter": [
+        {
+          "external": {
+            "command": "black",
+            "arguments": ["-"]
+          }
+        },
+        {
+          "external": {
+            "command": "isort",
+            "arguments": ["--stdout", "{buffer_path}"]
+          }
+        }
+      ],
+      "format_on_save": "on"
     }
   },
   "lsp": {

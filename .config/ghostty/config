@@ -1,0 +1,7 @@
+font-family = JetBrainsMono Nerd Font Mono
+font-style = Medium
+theme = light:Catppuccin Latte,dark:Vibrant Ink
+
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+left=previous_tab
+keybind = ctrl+shift+right=next_tab

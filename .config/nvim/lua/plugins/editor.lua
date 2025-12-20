@@ -94,8 +94,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				javascript = { "prettierd", "prettier", "eslint_d" },
-				html = { "prettierd", "prettier", "eslint_d" },
+				javascript = { "prettier", "eslint_d" },
+				html = { "prettier", "eslint_d" },
 			},
 			format_on_save = function(bufnr)
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -110,11 +110,11 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				javascript = { "prettierd", "eslint_d" },
-				typescript = { "prettierd", "eslint_d" },
-				javascriptreact = { "prettierd", "eslint_d" },
-				typescriptreact = { "prettierd", "eslint_d" },
-				html = { "prettierd", "eslint_d" },
+				javascript = { "eslint_d" },
+				typescript = { "eslint_d" },
+				javascriptreact = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+				html = { "eslint_d" },
 				htmldjango = { "djlint" },
 			}
 			vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {

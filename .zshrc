@@ -111,8 +111,9 @@ alias venv='if [[ -d .venv ]] ; then source .venv/bin/activate ; elif [[ -d venv
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
-alias docker=podman
-export DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
 
 export ROCM_PATH=/opt/rocm
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
+
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock

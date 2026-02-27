@@ -1,73 +1,71 @@
 {
-  "icon_theme": "Material Icon Theme",
+  "redact_private_values": false,
+  "ui_font_family": "Noto Sans",
+  "buffer_line_height": "standard",
+  "buffer_font_size": 17.0,
+  "buffer_font_family": "ComicShannsMono Nerd Font",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
   "vim_mode": true,
-  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
-  "buffer_font_size": 14,
-  "ui_font_family": "JetBrainsMono Nerd Font Mono",
-  "ui_font_size": 16,
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha"
+    "light": "One Light",
+    "dark": "One Dark",
   },
-  "agent": { "button": false },
-  "terminal": { "button": false },
   "languages": {
     "Python": {
       "language_servers": ["!pyright", "basedpyright"],
       "formatter": [
         {
           "external": {
-            "command": "black",
-            "arguments": ["-"]
-          }
+            "command": ".venv/bin/black",
+            "arguments": ["--stdin-filename", "{buffer_path}", "-"],
+          },
         },
-        {
-          "external": {
-            "command": "isort",
-            "arguments": ["--stdout", "{buffer_path}"]
-          }
-        }
       ],
-      "format_on_save": "on"
-    }
+      "format_on_save": "on",
+    },
   },
   "lsp": {
     "basedpyright": {
       "binary": {
         "path": "basedpyright-langserver",
-        "arguments": ["--stdio"]
+        "arguments": ["--stdio"],
       },
       "settings": {
         "python": {
           "pythonPath": ".venv/bin/python",
           "analysis": {
-            "ignore": ["*"]
-          }
+            "ignore": ["*"],
+          },
         },
-        "basedpyright.analysis": {
-          "diagnosticMode": "workspace",
-          "typeCheckingMode": "off",
-          "inlayHints": {
-            "callArgumentNames": false
-          }
-        }
-      }
-    }
+        "basedpyright": {
+          "disableOrganizeImports": true,
+          "analysis": {
+            "typeCheckingMode": "off",
+            "inlayHints": {
+              "callArgumentNames": false,
+            },
+          },
+        },
+      },
+    },
   },
   "vertical_scroll_margin": 0,
   "scrollbar": { "show": "never" },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "cursor_blink": false,
   "toolbar": {
     "quick_actions": false,
     "selections_menu": false,
-    "breadcrumbs": false
+    "breadcrumbs": false,
   },
-  "project_panel": {
-    "hide_root": true
-  },
-  "gutter": {
-    "folds": false
-  }
+  "semantic_tokens": null,
+  "lsp_document_colors": null,
+  "project_panel": { "hide_root": true },
+  "gutter": { "folds": false },
+  "agent": { "button": false, "enabled": false },
+  "terminal": { "button": false },
 }

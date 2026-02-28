@@ -87,44 +87,4 @@ return {
 			indent = { enable = true, disable = { 'ruby' } },
 		},
 	},
-	{
-		"stevearc/conform.nvim",
-		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-		opts = {
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { "prettier", "eslint_d" },
-				html = { "prettier", "eslint_d" },
-			},
-			format_on_save = function(bufnr)
-				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-					return
-				end
-				return { timeout_ms = 500, lsp_fallback = true }
-			end,
-		},
-	},
-	{
-		"mfussenegger/nvim-lint",
-		config = function()
-			local lint = require("lint")
-			lint.linters_by_ft = {
-				javascript = { "eslint_d" },
-				typescript = { "eslint_d" },
-				javascriptreact = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
-				html = { "eslint_d" },
-				htmldjango = { "djlint" },
-			}
-			vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
-				callback = function()
-					local lint_status, lint = pcall(require, "lint")
-					if lint_status then
-						lint.try_lint()
-					end
-				end,
-			})
-		end,
-	},
 }

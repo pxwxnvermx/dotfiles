@@ -5,7 +5,7 @@ return {
 		priority = 1000,
 		opts = {
 			term_colors = true,
-			transparent_background = false,
+			transparent_background = true,
 			color_overrides = {
 				mocha = {
 					base = "#000000",
@@ -78,8 +78,10 @@ return {
 	},
 	{
 		'nvim-treesitter/nvim-treesitter',
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter-context',
+		},
 		build = ':TSUpdate',
-		main = 'nvim-treesitter.configs',
 		opts = {
 			ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
 			auto_install = true,

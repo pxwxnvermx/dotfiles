@@ -86,22 +86,8 @@ return {
 						},
 					},
 				},
-				basedpyright = {
-					settings = {
-						basedpyright = {
-							disableOrganizeImports = true,
-							analysis = {
-								typeCheckingMode = "off",
-							},
-						},
-						python = {
-							analysis = {
-								ignore = { "*" },
-							},
-						},
-					},
-				},
 				ruff = {},
+				ty = {},
 			}
 
 			vim.lsp.config("*", { capabilities = capabilities })

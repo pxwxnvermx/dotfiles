@@ -1,7 +1,9 @@
 [tools]
+fzf = "latest"
 node = "lts"
 python = "latest"
+ripgrep = "latest"
 ruby = "3.4.3"
 usage = "latest"
 uv = "latest"
-zig = "0.15.2"
+zig = "latest"

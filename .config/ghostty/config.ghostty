@@ -1,0 +1,5 @@
+font-family = "ComicShannsMono Nerd Font"
+font-size = 13
+theme = "light:Catppuccin Latte,dark:12-bit Rainbow"
+background-opacity = 0.95
+background-blur = true

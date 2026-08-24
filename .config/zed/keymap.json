@@ -1,0 +1,20 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "space f f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  {
+      "context": "EmptyPane || SharedScreen",
+      "bindings": {
+        "space f f": "file_finder::Toggle",
+      }
+    },
+]

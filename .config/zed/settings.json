@@ -1,0 +1,45 @@
+{
+  "agent_servers": {
+    "pi-acp": {
+      "type": "registry"
+    }
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Dark"
+  },
+  "disable_ai": false,
+  "languages": {
+    "Python": {
+      "language_servers": [
+        "ty",
+        "ruff",
+        "!basedpyright",
+        "!pyright"
+      ]
+    }
+  },
+  "relative_line_numbers": "enabled",
+  "gutter": {
+    "runnables": false,
+    "breakpoints": false,
+    "folds": false,
+    "line_numbers": true,
+    "min_line_number_digits": 4
+  },
+  "ui_font_family": "Noto Sans",
+  "buffer_font_family": "ComicShannsMono Nerd Font",
+  "vim_mode": true,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 15,
+  "edit_predictions": {
+    "allow_data_collection": "no"
+  },
+  "show_edit_predictions": false,
+}

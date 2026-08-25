@@ -99,5 +99,11 @@ return {
 			format_on_save = { timeout_ms = 500, lsp_format = 'fallback', },
 			formatters_by_ft = {},
 		},
+	},
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		---@module 'render-markdown'
+			---@type render.md.UserConfig
+			opts = {},
 	}
 }

@@ -117,3 +117,5 @@ export HSA_OVERRIDE_GFX_VERSION=10.3.0
 
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

@@ -1,18 +1,30 @@
 {
+  "agent_buffer_font_size": 15.0,
+  "agent_ui_font_size": 15.0,
+  "cli_default_open_behavior": "existing_window",
+  "agent": {
+    "button": false,
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "diff_view_style": "split",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
   "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    },
     "pi-acp": {
       "type": "registry"
-    }
-  },
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)"
+    },
   },
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Dark"
+    "dark": "Catppuccin Mocha"
   },
   "disable_ai": false,
   "languages": {
@@ -34,7 +46,7 @@
     "min_line_number_digits": 4
   },
   "ui_font_family": "Noto Sans",
-  "buffer_font_family": "ComicShannsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "vim_mode": true,
   "ui_font_size": 14.0,
   "buffer_font_size": 15,
@@ -42,4 +54,9 @@
     "allow_data_collection": "no"
   },
   "show_edit_predictions": false,
+  "markdown_preview": {
+    "code_font_family": "JetBrainsMono Nerd Font",
+    "font_family": "JetBrainsMono Nerd Font",
+    "max_width": 1000,
+  }
 }

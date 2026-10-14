@@ -2,19 +2,36 @@
   {
     "context": "Workspace",
     "bindings": {
-      "space f f": "file_finder::Toggle"
+      "space f f": "file_finder::Toggle",
+      "space s g": "project_search::ToggleFocus",
+      "space h r": "workspace::ToggleRightDock",
+      "space h l": "workspace::ToggleLeftDock",
+      "space space": "tab_switcher::ToggleAll"
     }
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      "g r": "editor::FindAllReferences",
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "g r": "editor::FindAllReferences",
+      "space h r": "workspace::ToggleRightDock",
+      "space h l": "workspace::ToggleLeftDock",
     }
   },
   {
       "context": "EmptyPane || SharedScreen",
       "bindings": {
         "space f f": "file_finder::Toggle",
+        "space s g": "pane::DeploySearch",
+        "space h r": "workspace::ToggleRightDock",
+        "space h l": "workspace::ToggleLeftDock",
       }
     },
 ]

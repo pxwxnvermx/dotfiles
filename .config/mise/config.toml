@@ -1,4 +1,5 @@
 [tools]
+eza = "latest"
 fzf = "latest"
 node = "lts"
 python = "latest"

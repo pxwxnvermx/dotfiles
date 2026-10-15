@@ -46,17 +46,14 @@
     "min_line_number_digits": 4
   },
   "ui_font_family": "Noto Sans",
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "IosevkaTerm Nerd Font Mono",
   "vim_mode": true,
-  "ui_font_size": 14.0,
-  "buffer_font_size": 15,
   "edit_predictions": {
     "allow_data_collection": "no"
   },
   "show_edit_predictions": false,
   "markdown_preview": {
-    "code_font_family": "JetBrainsMono Nerd Font",
-    "font_family": "JetBrainsMono Nerd Font",
+    "code_font_family": "IosevkaTerm Nerd Font Mono",
     "max_width": 1000,
   }
 }
